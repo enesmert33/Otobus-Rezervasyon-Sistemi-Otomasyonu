@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Schedules</title>
+</head>
+<body>
+    <h1>Bus Schedules</h1>
+    <ul>
+        {% for schedule in schedules %}
+            <li>{{ schedule }}</li>
+        {% endfor %}
+    </ul>
+    <form action="/make_reservation" method="post">
+        <label for="selected_schedule">Select Schedule:</label>
+        <select name="selected_schedule">
+            {% for schedule in schedules %}
+                <option value="{{ schedule }}">{{ schedule }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Make Reservation</button>
+    </form>
+    <p>{{ get_flashed_messages() }}</p>
+</body>
+</html>
